@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.androidmvc.mvvm.viewmodel.LoginViewModel">
+        </variable>
+    </data>
+    <!--先要指定绑定的类-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view_activity.LoginActivity">
+
+
+        <TextView
+            android:id="@+id/loginmessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.loginMessage}"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/teal_700"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"/>
+
+        <!--监听text的变化-->
+        <EditText
+            android:id="@+id/login_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/loginmessage"
+            android:hint="UserName"
+            android:layout_marginBottom="10dp"
+            app:addTextChangedListener="@{viewmodel.usernameUpdate}"/>
+
+        <EditText
+            android:id="@+id/login_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Password"
+            android:ems="10"
+            android:layout_below="@id/login_username"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            app:addTextChangedListener="@{viewmodel.passwordUpdate}" />
+
+        <Button
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:text="LOGIN"
+            android:layout_below="@id/login_password"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{viewmodel.loginAuthentication}"/>
+
+    </RelativeLayout>
+</layout>
