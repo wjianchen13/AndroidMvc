@@ -83,6 +83,10 @@ MVVM 缺点
 由于数据绑定使得数据能够快速传递到其他位置，因此要定位出异常就比较有难度了。  
 
 
+# 参考文档
+https://www.pudn.com/news/6228df3e9ddf223e1ad2c847.html
+https://zhuanlan.zhihu.com/p/400738449
+
 
 
 
