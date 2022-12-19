@@ -25,12 +25,12 @@ public class MvvmActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityMvvmBinding= DataBindingUtil.setContentView(this, R.layout.activity_mvvm);
+        activityMvvmBinding = DataBindingUtil.setContentView(this, R.layout.activity_mvvm);
 
 
         User user=getIntent().getParcelableExtra(EXTRA_USER);
-
-        mainViewModel=new MainViewModel(this,user);
+//        DataBindingUtil.inflate()
+        mainViewModel = new MainViewModel(this,user);
         activityMvvmBinding.setMainviewmodel(mainViewModel);
     }
 

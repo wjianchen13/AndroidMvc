@@ -20,6 +20,7 @@
         <activity android:name=".mvp.view.MvpActivity" />
         <activity android:name=".mvvm.view.LoginActivity" />
         <activity android:name=".mvvm.view.MvvmActivity" />
+        <activity android:name=".llistView.ListViewActivity" />
         
     </application>
 

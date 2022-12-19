@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.androidmvc.llistView.ListViewActivity;
 import com.example.androidmvc.mvc.controllor.MvcActivity;
 import com.example.androidmvc.mvp.view.MvpActivity;
 import com.example.androidmvc.mvvm.view.LoginActivity;
@@ -28,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void onMvvm(View v) {
         startActivity(new Intent(this, LoginActivity.class));
+    }
+
+    public void onListView(View v) {
+        startActivity(new Intent(this, ListViewActivity.class));
     }
     
 }

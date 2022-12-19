@@ -17,6 +17,19 @@ import com.example.androidmvc.mvc.model.OnLoginListener;
 import com.example.androidmvc.mvc.model.User;
 import com.example.androidmvc.mvc.model.UserBiz;
 
+/**
+ * Android中的MVC含义
+ *
+ * Model：实体类(数据的获取、存储、数据状态变化)。
+ * View：布局文件
+ * Controller：Activity(处理数据、业务和UI)。
+ *
+ * View接受用户的交互请求。
+ * View将请求转交给Controller。
+ * Controller操作Model进行数据更新。
+ * 数据更新之后，Model通知View数据变化。
+ * View显示更新之后的数据。
+ */
 public class MvcActivity extends AppCompatActivity implements OnLoginListener {
 
     public static final int TYPE_SUCCESS = 1;

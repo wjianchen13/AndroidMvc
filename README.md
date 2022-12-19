@@ -82,11 +82,13 @@ MVVM 缺点
 界面出现异常时，有可能是 View 的代码有问题，也可能是 Model 的代码有问题。  
 由于数据绑定使得数据能够快速传递到其他位置，因此要定位出异常就比较有难度了。  
 
+# 列表显示数据，包括activity和fragment
+
 
 # 参考文档
 https://www.pudn.com/news/6228df3e9ddf223e1ad2c847.html
 https://zhuanlan.zhihu.com/p/400738449
-
+https://www.bbsmax.com/A/obzb0AR05E/
 
 
 

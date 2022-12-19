@@ -20,7 +20,7 @@ public class MvpActivity extends AppCompatActivity implements IUserLoginView{
     private Button login_btn,clear_btn;
     private ProgressBar loading;
 
-    private UserLoginPresenter userLoginPresenter=new UserLoginPresenter(this);
+    private UserLoginPresenter userLoginPresenter = new UserLoginPresenter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

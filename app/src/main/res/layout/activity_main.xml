@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="MVC"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:onClick="onMvc"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:text="MVP"
         android:onClick="onMvp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_mvc" />
@@ -34,9 +34,21 @@
         android:layout_height="wrap_content"
         android:text="MVVM"
         android:onClick="onMvvm"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_mvp" />
+
+    <Button
+        android:id="@+id/btn_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="列表显示"
+        android:onClick="onListView"
+        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_mvvm" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
