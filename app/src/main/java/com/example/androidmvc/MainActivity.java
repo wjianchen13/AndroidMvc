@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onListView(View v) {
-        startActivity(new Intent(this, ListViewActivity.class));
+//        startActivity(new Intent(this, ListViewActivity.class));
     }
     
 }

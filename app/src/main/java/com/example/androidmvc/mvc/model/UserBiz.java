@@ -13,10 +13,7 @@ public class UserBiz {
         this.tvTip = tv;
     }
 
-    public void login(final String username,final String password,final OnLoginListener
-            
-            loginListener){
-        
+    public void login(final String username,final String password,final OnLoginListener loginListener){
         new Thread() {
             @Override
             public void run() {
