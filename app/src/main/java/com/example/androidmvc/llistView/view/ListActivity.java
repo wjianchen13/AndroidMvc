@@ -68,4 +68,9 @@ public class ListActivity extends BaseMvpActivity<ListPresenter> implements ILis
 
         }
     }
+
+    @Override
+    public boolean refresh() {
+        return false;
+    }
 }

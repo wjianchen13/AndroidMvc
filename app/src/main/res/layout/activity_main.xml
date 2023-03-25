@@ -51,4 +51,15 @@
         app:layout_constraintTop_toBottomOf="@id/btn_mvvm" />
 
 
+    <Button
+        android:id="@+id/btn_test_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="测试列表框架"
+        android:onClick="onTestRecyclerview"
+        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_mvvm" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

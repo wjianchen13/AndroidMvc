@@ -10,6 +10,7 @@ import com.example.androidmvc.llistView.ListViewActivity;
 import com.example.androidmvc.mvc.controllor.MvcActivity;
 import com.example.androidmvc.mvp.view.MvpActivity;
 import com.example.androidmvc.mvvm.view.LoginActivity;
+import com.example.androidmvc.test_recyclerview.view.TestRecyclerviewActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,5 +35,9 @@ public class MainActivity extends AppCompatActivity {
     public void onListView(View v) {
         startActivity(new Intent(this, ListViewActivity.class));
     }
-    
+
+    public void onTestRecyclerview(View v) {
+        startActivity(new Intent(this, TestRecyclerviewActivity.class));
+    }
+
 }

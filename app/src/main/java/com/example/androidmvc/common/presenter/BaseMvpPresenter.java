@@ -1,6 +1,10 @@
 package com.example.androidmvc.common.presenter;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+
+import androidx.annotation.CallSuper;
 
 import com.example.androidmvc.common.view.IBaseMvpView;
 
@@ -16,6 +20,12 @@ public abstract class BaseMvpPresenter<V extends IBaseMvpView>  {
 
     public BaseMvpPresenter(V mMvpView) {
         this.mMvpView = mMvpView;
+    }
+
+
+    @CallSuper
+    public boolean queueIdle(Bundle savedInstanceState, Intent intent, LayoutInflater inflater) {
+        return false;
     }
 
     /**

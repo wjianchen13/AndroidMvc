@@ -23,7 +23,8 @@
         <activity android:name=".mvvm.view.MvvmActivity" />
         <activity android:name=".llistView.ListViewActivity" />
         <activity android:name=".llistView.view.ListActivity" />
-        
+        <activity android:name=".test_recyclerview.view.TestRecyclerviewActivity" />
+
     </application>
 
 </manifest>

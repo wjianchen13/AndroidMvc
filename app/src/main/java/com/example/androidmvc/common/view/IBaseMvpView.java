@@ -1,5 +1,7 @@
 package com.example.androidmvc.common.view;
 
+import android.app.Activity;
+
 import com.example.androidmvc.common.presenter.BaseMvpPresenter;
 
 /**
@@ -8,4 +10,8 @@ import com.example.androidmvc.common.presenter.BaseMvpPresenter;
 public interface IBaseMvpView {
 
     public BaseMvpPresenter getPresenter();
+
+    Activity getActivity();
+
+    boolean refresh();
 }
