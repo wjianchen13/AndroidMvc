@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.androidmvc.generic1.TestFragmentActivity;
 import com.example.androidmvc.llistView.ListViewActivity;
 import com.example.androidmvc.mvc.controllor.MvcActivity;
 import com.example.androidmvc.mvp.view.MvpActivity;
@@ -38,6 +39,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void onTestRecyclerview(View v) {
         startActivity(new Intent(this, TestRecyclerviewActivity.class));
+    }
+
+    /**
+     * 测试项目中使用fragment的情况
+     * @param v
+     */
+    public void onTestFragment(View v) {
+        startActivity(new Intent(this, TestFragmentActivity.class));
     }
 
 }
