@@ -1,0 +1,118 @@
+package com.example.androidmvc.practice.base.view;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.example.androidmvc.R;
+import com.example.androidmvc.practice.base.presenter.BaseFragmentMvpPresenter;
+
+public abstract class BaseMvpFragment<V extends IBaseMvpView, P extends BaseFragmentMvpPresenter<V>>  extends Fragment implements IBaseMvpView  {
+
+    public static final String TAG = BaseMvpFragment.class.getSimpleName();
+
+    protected P mPresenter;
+
+    public BaseMvpFragment() {
+
+    }
+
+    protected abstract P initPresenter();
+
+    public P getPresenter() {
+        if(mPresenter == null)
+            mPresenter = initPresenter();
+        return mPresenter;
+    }
+
+    @Override
+    public Context getContext() {
+        return getActivity();
+    }
+
+    @Override
+    public void showToast(String str) {
+        Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        getPresenter().onAttach(context);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getPresenter().onCreate(savedInstanceState);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_test1, container, false);
+        return v;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        getPresenter().onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getPresenter().onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        getPresenter().onStart();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getPresenter().onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        getPresenter().onPause();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        getPresenter().onStop();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        getPresenter().onDestroyView();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getPresenter().onDestroy();
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        getPresenter().onDetach();
+    }
+}

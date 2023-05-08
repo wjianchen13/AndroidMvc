@@ -7,10 +7,10 @@ import android.widget.TextView;
 
 import com.example.androidmvc.R;
 import com.example.androidmvc.practice.base.view.BaseMvpActivity;
-import com.example.androidmvc.practice.test_activity.presenter.TestMvpPresenter;
+import com.example.androidmvc.practice.test_activity.presenter.TestMvpActivityPresenter;
 import com.example.androidmvc.utils.Utils;
 
-public class TestMvpActivity extends BaseMvpActivity<ITestMvpView, TestMvpPresenter> implements ITestMvpView{
+public class TestMvpActivity extends BaseMvpActivity<ITestMvpActivityView, TestMvpActivityPresenter> implements ITestMvpActivityView {
 
     private static final String TAG = TestMvpActivity.class.getSimpleName();
     private TextView tvTip1;
@@ -18,13 +18,13 @@ public class TestMvpActivity extends BaseMvpActivity<ITestMvpView, TestMvpPresen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_mvp);
+        setContentView(R.layout.activity_test_mvp_activity);
         tvTip1 = findViewById(R.id.tv_tip1);
     }
 
     @Override
-    protected TestMvpPresenter initPresenter() {
-        return new TestMvpPresenter(this);
+    protected TestMvpActivityPresenter initPresenter() {
+        return new TestMvpActivityPresenter(this);
     }
 
     public void onToast(View v) {

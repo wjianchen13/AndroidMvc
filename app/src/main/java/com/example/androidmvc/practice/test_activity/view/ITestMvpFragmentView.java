@@ -5,7 +5,7 @@ import com.example.androidmvc.practice.base.view.IBaseMvpView;
 /**
  * 测试接口
  */
-public interface ITestMvpView extends IBaseMvpView {
+public interface ITestMvpFragmentView extends IBaseMvpView {
 
     void test();
 
