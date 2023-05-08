@@ -1,4 +1,4 @@
-package com.example.androidmvc.mvp.presenter;
+package com.example.androidmvc.practice.test_fragment.presenter;
 
 import android.os.Handler;
 
@@ -8,13 +8,13 @@ import com.example.androidmvc.mvp.model.biz.OnLoginListener;
 import com.example.androidmvc.mvp.model.biz.UserBiz;
 import com.example.androidmvc.mvp.view.IUserLoginView;
 
-public class UserLoginPresenter {
+public class TestFragmentPresenter {
 
     private IUserBiz userBiz;
     private IUserLoginView userLoginView;
     private Handler mHandler = new Handler();
 
-    public UserLoginPresenter(IUserLoginView userLoginView) {
+    public TestFragmentPresenter(IUserLoginView userLoginView) {
         this.userLoginView = userLoginView;
 
         //给userBiz一个子类的空间，此时方法已经被重写,登陆逻辑已被判断

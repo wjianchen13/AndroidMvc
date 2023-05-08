@@ -11,6 +11,8 @@ import com.example.androidmvc.llistView.ListViewActivity;
 import com.example.androidmvc.mvc.controllor.MvcActivity;
 import com.example.androidmvc.mvp.view.MvpActivity;
 import com.example.androidmvc.mvvm.view.LoginActivity;
+import com.example.androidmvc.practice.test_activity.view.TestMvpActivity;
+import com.example.androidmvc.practice.test_fragment.view.TestFragmentActivity1;
 import com.example.androidmvc.test_recyclerview.view.TestRecyclerviewActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,6 +49,22 @@ public class MainActivity extends AppCompatActivity {
      */
     public void onTestFragment(View v) {
         startActivity(new Intent(this, TestFragmentActivity.class));
+    }
+
+    /**
+     * 测试项目中使用复杂Activity的情况
+     * @param v
+     */
+    public void onTestActivity(View v) {
+        startActivity(new Intent(this, TestMvpActivity.class));
+    }
+
+    /**
+     * 测试项目中使用复杂fragment的情况
+     * @param v
+     */
+    public void onTestFragment1(View v) {
+        startActivity(new Intent(this, TestFragmentActivity1.class));
     }
 
 }
