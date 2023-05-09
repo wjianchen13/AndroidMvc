@@ -1,7 +1,7 @@
 package com.example.androidmvc.practice.test_fragment.presenter;
 
 import com.example.androidmvc.practice.base.presenter.BaseFragmentMvpPresenter;
-import com.example.androidmvc.practice.test_activity.view.ITestMvpFragmentView;
+import com.example.androidmvc.practice.test_fragment.view.ITestMvpFragmentView;
 
 public class TestMvpFragmentPresenter extends BaseFragmentMvpPresenter<ITestMvpFragmentView> {
 

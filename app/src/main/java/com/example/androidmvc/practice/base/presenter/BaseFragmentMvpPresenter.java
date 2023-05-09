@@ -10,6 +10,9 @@ import androidx.annotation.Nullable;
 import com.example.androidmvc.practice.base.view.IBaseMvpView;
 import com.example.androidmvc.utils.Utils;
 
+import java.util.List;
+
+
 /**
  * MVP公共Presenter
  */
@@ -19,7 +22,6 @@ public class BaseFragmentMvpPresenter<V extends IBaseMvpView> extends BaseMvpPre
 
     public BaseFragmentMvpPresenter(V view) {
         super(view);
-
     }
 
     public void onAttach(@NonNull Context context) {

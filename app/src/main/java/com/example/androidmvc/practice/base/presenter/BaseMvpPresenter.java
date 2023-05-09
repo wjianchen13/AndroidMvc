@@ -28,32 +28,4 @@ public class BaseMvpPresenter<V extends IBaseMvpView>  {
         return mView;
     }
 
-    public void onStart() {
-
-    }
-
-    public void onRestart() {
-
-    }
-
-    public void onPostResume() {
-
-    }
-
-    public void onResume() {
-
-    }
-
-    public void onPause() {
-
-    }
-
-    public void onStop() {
-
-    }
-
-    public void onDestroy() {
-
-    }
-
 }

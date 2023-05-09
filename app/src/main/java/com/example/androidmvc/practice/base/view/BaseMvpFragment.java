@@ -19,6 +19,7 @@ public abstract class BaseMvpFragment<V extends IBaseMvpView, P extends BaseFrag
     public static final String TAG = BaseMvpFragment.class.getSimpleName();
 
     protected P mPresenter;
+    protected View mRootView;
 
     public BaseMvpFragment() {
 
@@ -58,9 +59,11 @@ public abstract class BaseMvpFragment<V extends IBaseMvpView, P extends BaseFrag
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_test1, container, false);
-        return v;
+        mRootView = onCreateViewExp(inflater, container, savedInstanceState);
+        return mRootView;
     }
+
+    protected abstract View onCreateViewExp(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState);
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -115,4 +118,6 @@ public abstract class BaseMvpFragment<V extends IBaseMvpView, P extends BaseFrag
         super.onDetach();
         getPresenter().onDetach();
     }
+
+
 }

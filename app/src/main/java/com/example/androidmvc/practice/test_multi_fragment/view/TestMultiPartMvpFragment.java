@@ -1,5 +1,4 @@
-package com.example.androidmvc.practice.test_fragment.view;
-
+package com.example.androidmvc.practice.test_multi_fragment.view;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,37 +7,40 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.androidmvc.R;
-import com.example.androidmvc.practice.base.view.BaseMvpFragment;
-import com.example.androidmvc.practice.test_fragment.presenter.TestMvpFragmentPresenter;
+import com.example.androidmvc.practice.base.view.BaseMultiPartMvpFragment;
+import com.example.androidmvc.practice.test_multi_fragment.modules.Part1Module;
+import com.example.androidmvc.practice.test_multi_fragment.modules.Part2Module;
+import com.example.androidmvc.practice.test_multi_fragment.presenter.TestMultiPartMvpFragmentPresenter;
 import com.example.androidmvc.utils.Utils;
 
 /**
  * Fragment MVP框架测试
  */
-public class TestMvpFragment extends BaseMvpFragment<ITestMvpFragmentView, TestMvpFragmentPresenter> implements ITestMvpFragmentView, View.OnClickListener {
+public class TestMultiPartMvpFragment extends BaseMultiPartMvpFragment<ITestMultiPartMvpFragmentView, TestMultiPartMvpFragmentPresenter> implements ITestMultiPartMvpFragmentView, View.OnClickListener {
 
-    public static final String TAG = TestMvpFragment.class.getSimpleName();
+    public static final String TAG = TestMultiPartMvpFragment.class.getSimpleName();
 
     private String LOG = "=============================> ";
 
-    private TextView tvTip1;
-    private Button btnToast;
-    private Button btnTest;
-    private Button btnContext;
-    private Button btnTip;
+    private Button btnTest1;
+    private Button btnTest2;
+    private Button btnTest3;
+    private Button btnTest4;
 
-    public TestMvpFragment() {
+    private Part1Module mPart1Module;
+    private Part2Module mPart2Module;
+
+    public TestMultiPartMvpFragment() {
     }
 
     @Override
-    protected TestMvpFragmentPresenter initPresenter() {
-        return new TestMvpFragmentPresenter(this);
+    protected TestMultiPartMvpFragmentPresenter initPresenter() {
+        return new TestMultiPartMvpFragmentPresenter(this);
     }
 
     @Override
@@ -57,31 +59,28 @@ public class TestMvpFragment extends BaseMvpFragment<ITestMvpFragmentView, TestM
     @Override
     public View onCreateViewExp(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.d(TAG, LOG + "onCreateView");
-        View v = inflater.inflate(R.layout.fragment_test1, container, false);
-        tvTip1 = v.findViewById(R.id.tv_tip1);
-        btnToast = v.findViewById(R.id.btn_toast);
-        btnTest = v.findViewById(R.id.btn_test);
-        btnContext = v.findViewById(R.id.btn_context);
-        btnTip = v.findViewById(R.id.btn_tip);
-        btnToast.setOnClickListener(this);
-        btnTest.setOnClickListener(this);
-        btnContext.setOnClickListener(this);
-        btnTip.setOnClickListener(this);
+        View v = inflater.inflate(R.layout.fragment_test_multi_part, container, false);
+        btnTest1 = v.findViewById(R.id.btn_test1);
+        btnTest2 = v.findViewById(R.id.btn_test2);
+        btnTest3 = v.findViewById(R.id.btn_test3);
+        btnTest4 = v.findViewById(R.id.btn_test4);
+        btnTest1.setOnClickListener(this);
+        btnTest2.setOnClickListener(this);
+        btnTest3.setOnClickListener(this);
+        btnTest4.setOnClickListener(this);
         return v;
     }
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.btn_toast) {
-            getPresenter().showToast("toast");
-        } else if(v.getId() == R.id.btn_test) {
-            String str = mPresenter.getTestString();
-            Utils.i(TAG, "str: " + str);
-        } else if(v.getId() == R.id.btn_context) {
-            Context context = mPresenter.getContext();
-            Utils.i(TAG, "context: " + context);
-        } else if(v.getId() == R.id.btn_tip) {
-            mPresenter.onTip();
+        if(v.getId() == R.id.btn_test1) {
+            getPresenter().getPart1Text();
+        } else if(v.getId() == R.id.btn_test2) {
+            getPresenter().getPart2Text();
+        } else if(v.getId() == R.id.btn_test3) {
+
+        } else if(v.getId() == R.id.btn_test4) {
+
         }
     }
 
@@ -95,6 +94,14 @@ public class TestMvpFragment extends BaseMvpFragment<ITestMvpFragmentView, TestM
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Log.d(TAG, LOG + "onViewCreated");
+        initModules();
+    }
+
+    private void initModules() {
+        mPart1Module = new Part1Module(this, mRootView);
+        mPart1Module.init();
+        mPart2Module = new Part2Module(this, mRootView);
+        mPart2Module.init();
     }
 
     @Override
@@ -141,6 +148,17 @@ public class TestMvpFragment extends BaseMvpFragment<ITestMvpFragmentView, TestM
 
     @Override
     public void test() {
-        tvTip1.setVisibility(View.VISIBLE);
+
+    }
+
+    @Override
+    public void onGetText(String str) {
+        mPart1Module.onGetText(str);
+    }
+
+
+    @Override
+    public void onGetText2(String str) {
+        mPart2Module.onGetText2(str);
     }
 }

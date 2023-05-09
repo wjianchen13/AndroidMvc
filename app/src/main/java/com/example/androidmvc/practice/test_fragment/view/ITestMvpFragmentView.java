@@ -1,4 +1,4 @@
-package com.example.androidmvc.practice.test_activity.view;
+package com.example.androidmvc.practice.test_fragment.view;
 
 import com.example.androidmvc.practice.base.view.IBaseMvpView;
 

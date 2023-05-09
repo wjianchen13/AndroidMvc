@@ -98,5 +98,17 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_test_activity" />
 
+    <Button
+        android:id="@+id/btn_test_multi_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="测试多部分 Fragment"
+        android:onClick="onTestMultiFragment"
+        android:layout_marginTop="5dp"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_test_fragment1" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
