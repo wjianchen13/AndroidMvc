@@ -5,7 +5,7 @@ import com.example.androidmvc.practice.base.view.IBaseMultiPartMvpView;
 /**
  * 测试接口
  */
-public interface ITestMultiPartMvpFragmentView extends IBaseMultiPartMvpView, IPart1View, IPart2View {
+public interface ITestMultiPartMvpFragmentView extends IBaseMultiPartMvpView, IPart1View, IPart2View, IPart3View {
 
     void test();
 

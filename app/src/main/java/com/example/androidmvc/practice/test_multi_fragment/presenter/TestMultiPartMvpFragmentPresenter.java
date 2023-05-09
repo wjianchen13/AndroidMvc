@@ -8,6 +8,7 @@ public class TestMultiPartMvpFragmentPresenter extends BaseFragmentMultiPartyMvp
 
     private Part1Presenter mPart1Presenter;
     private Part2Presenter mPart2Presenter;
+    private Part3Presenter mPart3Presenter;
 
     public TestMultiPartMvpFragmentPresenter(ITestMultiPartMvpFragmentView view) {
         super(view);
@@ -17,6 +18,7 @@ public class TestMultiPartMvpFragmentPresenter extends BaseFragmentMultiPartyMvp
     private void initPresenters(ITestMultiPartMvpFragmentView view) {
         mPart1Presenter = initChildPresenter(new Part1Presenter(view));
         mPart2Presenter = initChildPresenter(new Part2Presenter(view));
+        mPart3Presenter = initChildPresenter(new Part3Presenter(view));
     }
 
     public void getPart1Text() {
@@ -27,6 +29,11 @@ public class TestMultiPartMvpFragmentPresenter extends BaseFragmentMultiPartyMvp
     public void getPart2Text() {
         if(mPart2Presenter != null)
             mPart2Presenter.getPart2Text();
+    }
+
+    public void getPart3Text() {
+        if(mPart3Presenter != null)
+            mPart3Presenter.getPart3Text();
     }
 
     public String getTestString() {

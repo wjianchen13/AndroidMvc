@@ -1,5 +1,7 @@
 package com.example.androidmvc.practice.test_multi_fragment.view;
 
+import static com.example.androidmvc.practice.base.module.Constants.MODULE_VISIABLE;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,8 +17,8 @@ import com.example.androidmvc.R;
 import com.example.androidmvc.practice.base.view.BaseMultiPartMvpFragment;
 import com.example.androidmvc.practice.test_multi_fragment.modules.Part1Module;
 import com.example.androidmvc.practice.test_multi_fragment.modules.Part2Module;
+import com.example.androidmvc.practice.test_multi_fragment.modules.Part3Module;
 import com.example.androidmvc.practice.test_multi_fragment.presenter.TestMultiPartMvpFragmentPresenter;
-import com.example.androidmvc.utils.Utils;
 
 /**
  * Fragment MVP框架测试
@@ -34,6 +36,7 @@ public class TestMultiPartMvpFragment extends BaseMultiPartMvpFragment<ITestMult
 
     private Part1Module mPart1Module;
     private Part2Module mPart2Module;
+    private Part3Module mPart3Module;
 
     public TestMultiPartMvpFragment() {
     }
@@ -78,9 +81,9 @@ public class TestMultiPartMvpFragment extends BaseMultiPartMvpFragment<ITestMult
         } else if(v.getId() == R.id.btn_test2) {
             getPresenter().getPart2Text();
         } else if(v.getId() == R.id.btn_test3) {
-
+            mPart3Module.setVisible(MODULE_VISIABLE);
         } else if(v.getId() == R.id.btn_test4) {
-
+            getPresenter().getPart3Text();
         }
     }
 
@@ -102,6 +105,8 @@ public class TestMultiPartMvpFragment extends BaseMultiPartMvpFragment<ITestMult
         mPart1Module.init();
         mPart2Module = new Part2Module(this, mRootView);
         mPart2Module.init();
+        mPart3Module = new Part3Module(this, mRootView);
+
     }
 
     @Override
@@ -161,4 +166,10 @@ public class TestMultiPartMvpFragment extends BaseMultiPartMvpFragment<ITestMult
     public void onGetText2(String str) {
         mPart2Module.onGetText2(str);
     }
+
+    @Override
+    public void onGetText3(String str) {
+        mPart3Module.onGetText3(str);
+    }
+
 }

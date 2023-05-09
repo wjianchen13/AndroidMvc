@@ -56,15 +56,12 @@ public abstract class BaseModule extends LazyLoader implements IBaseMvpView, Vie
     }
 
     public Context getApplicationContext() {
-
         return null;
     }
 
     public void setVisible(@Constants.AnimEnum int animEnum) {
-
         if (animEnum == Constants.MODULE_VISIABLE)
             init();
-
         if (!isLazyInit() && animEnum == Constants.MODULE_IN_VISIABLE)
             return;
 

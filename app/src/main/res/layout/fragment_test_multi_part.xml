@@ -26,33 +26,14 @@
         android:id="@+id/llyt_part2"
         android:layout_width="100dp"
         android:layout_height="300dp"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentRight="true"
         android:layout_below="@id/llyt_part1"
-        android:orientation="vertical"
-        android:background="#00ff00">
-
-        <TextView
-            android:id="@+id/tv_part2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="#ff000000"
-            android:text="Fragment MVP 框架测试"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llyt_part3"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_above="@id/llyt_bottom"
-        android:layout_marginBottom="10dp"
-        android:background="#0000ff"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:background="#00ff00"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_part3"
+            android:id="@+id/tv_part2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -60,6 +41,16 @@
             android:textColor="#ff000000" />
 
     </LinearLayout>
+
+    <ViewStub
+        android:id="@+id/vs_part3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout="@layout/layout_vs_part3"
+        android:inflatedId="@+id/llyt_part3"
+        android:layout_above="@id/llyt_bottom"
+        android:layout_marginBottom="10dp"
+        android:background="#0000ff" />
 
     <LinearLayout
         android:id="@+id/llyt_bottom"
@@ -87,14 +78,14 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:textAllCaps="false"
-            android:text="获取模块3的数据" />
+            android:text="初始化模块3" />
 
         <Button
             android:id="@+id/btn_test4"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:textAllCaps="false"
-            android:text="获取模块4的数据" />
+            android:text="获取模块3的数据" />
 
     </LinearLayout>
 
