@@ -5,19 +5,20 @@ import android.widget.TextView;
 
 import com.example.androidmvc.R;
 import com.example.androidmvc.practice.base.module.BaseModule;
-import com.example.androidmvc.practice.base.view.BaseMultiPartMvpFragment;
+import com.example.androidmvc.practice.test_multi_fragment.presenter.TestMultiPartMvpFragmentPresenter;
 import com.example.androidmvc.practice.test_multi_fragment.view.IPart2View;
+import com.example.androidmvc.practice.test_multi_fragment.view.TestMultiPartMvpFragment;
 
-public class Part2Module extends BaseModule implements IPart2View {
+public class FragmentPart2Module extends BaseModule<TestMultiPartMvpFragment, TestMultiPartMvpFragmentPresenter> implements IPart2View {
 
     private TextView tvPart2;
 
-    public Part2Module(View parent) {
+    public FragmentPart2Module(View parent) {
         super(parent);
     }
 
-    public Part2Module(BaseMultiPartMvpFragment fragment, View parent) {
-        super(fragment, parent);
+    public FragmentPart2Module(TestMultiPartMvpFragment fragment, TestMultiPartMvpFragmentPresenter presenter, View parent) {
+        super(fragment, presenter, parent);
     }
 
     @Override

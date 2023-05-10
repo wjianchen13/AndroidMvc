@@ -1,11 +1,6 @@
 package com.example.androidmvc.practice.base.presenter;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.example.androidmvc.practice.base.view.IBaseMvpView;
 
@@ -15,37 +10,29 @@ import java.util.List;
 /**
  * Fragment多个部分独立公共Presenter
  */
-public class BaseFragmentMultiPartyMvpPresenter<V extends IBaseMvpView> extends BaseFragmentMvpPresenter<V> {
+public class BaseMultiPartyActivityMvpPresenter<V extends IBaseMvpView> extends BaseMultiPartMvpPresenter<V> {
 
-    private static final String TAG = BaseFragmentMultiPartyMvpPresenter.class.getSimpleName();
+    private static final String TAG = BaseMultiPartyActivityMvpPresenter.class.getSimpleName();
 
-    protected List<BaseFragmentMvpPresenter> mChildFragmentPresenters;
+    protected List<BaseMultiPartMvpPresenter> mChildFragmentPresenters;
 
-    public BaseFragmentMultiPartyMvpPresenter(V view) {
+    public BaseMultiPartyActivityMvpPresenter(V view) {
         super(view);
     }
 
-    protected List<BaseFragmentMvpPresenter> getChildFragmentPresenters() {
+    protected List<BaseMultiPartMvpPresenter> getChildFragmentPresenters() {
         if(mChildFragmentPresenters == null)
             mChildFragmentPresenters = new LinkedList<>();
         return mChildFragmentPresenters;
     }
 
-    protected <T extends BaseFragmentMvpPresenter> T initChildPresenter(T presenter) {
+    protected <T extends BaseMultiPartMvpPresenter> T initChildPresenter(T presenter) {
         if(presenter != null)
             getChildFragmentPresenters().add(presenter);
         return presenter;
     }
 
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        findAllChildPresenter(presenter -> {
-            if(presenter != null)
-                presenter.onAttach(context);
-        });
-    }
-
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         findAllChildPresenter(presenter -> {
             if(presenter != null)
@@ -53,19 +40,19 @@ public class BaseFragmentMultiPartyMvpPresenter<V extends IBaseMvpView> extends 
         });
     }
 
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onRestart() {
+        super.onRestart();
         findAllChildPresenter(presenter -> {
             if(presenter != null)
-                presenter.onActivityCreated(savedInstanceState);
+                presenter.onRestart();
         });
     }
 
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onPostResume() {
+        super.onPostResume();
         findAllChildPresenter(presenter -> {
             if(presenter != null)
-                presenter.onViewCreated(view, savedInstanceState);
+                presenter.onPostResume();
         });
     }
 
@@ -101,14 +88,6 @@ public class BaseFragmentMultiPartyMvpPresenter<V extends IBaseMvpView> extends 
         });
     }
 
-    public void onDestroyView() {
-        super.onDestroyView();
-        findAllChildPresenter(presenter -> {
-            if(presenter != null)
-                presenter.onDestroyView();
-        });
-    }
-
     public void onDestroy() {
         super.onDestroy();
         findAllChildPresenter(presenter -> {
@@ -117,17 +96,9 @@ public class BaseFragmentMultiPartyMvpPresenter<V extends IBaseMvpView> extends 
         });
     }
 
-    public void onDetach() {
-        super.onDetach();
-        findAllChildPresenter(presenter -> {
-            if(presenter != null)
-                presenter.onDetach();
-        });
-    }
-
     private void findAllChildPresenter(OnFindListener listener) {
         if(getChildFragmentPresenters() != null && getChildFragmentPresenters().size() > 0) {
-            for (BaseFragmentMvpPresenter p : getChildFragmentPresenters()){
+            for (BaseMultiPartMvpPresenter p : getChildFragmentPresenters()){
                 if(listener != null)
                     listener.onFindPresenter(p);
             }
@@ -135,7 +106,7 @@ public class BaseFragmentMultiPartyMvpPresenter<V extends IBaseMvpView> extends 
     }
 
     public interface OnFindListener {
-        void onFindPresenter(BaseFragmentMvpPresenter presenter);
+        void onFindPresenter(BaseMultiPartMvpPresenter presenter);
     }
 
 }

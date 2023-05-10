@@ -1,5 +1,7 @@
 package com.example.androidmvc.practice.base.presenter;
 
+import android.os.Bundle;
+
 import com.example.androidmvc.practice.base.view.IBaseMvpView;
 import com.example.androidmvc.utils.Utils;
 
@@ -12,6 +14,10 @@ public class BaseActivityMvpPresenter<V extends IBaseMvpView> extends BaseMvpPre
 
     public BaseActivityMvpPresenter(V view) {
         super(view);
+    }
+
+    public void onCreate(Bundle savedInstanceState) {
+        Utils.i(TAG, "onCreate");
     }
 
     public void onStart() {

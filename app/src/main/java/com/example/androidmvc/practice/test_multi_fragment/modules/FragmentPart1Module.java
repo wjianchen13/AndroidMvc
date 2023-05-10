@@ -6,26 +6,21 @@ import android.widget.TextView;
 
 import com.example.androidmvc.R;
 import com.example.androidmvc.practice.base.module.BaseModule;
-import com.example.androidmvc.practice.base.view.BaseMultiPartMvpFragment;
 import com.example.androidmvc.practice.test_multi_fragment.presenter.TestMultiPartMvpFragmentPresenter;
 import com.example.androidmvc.practice.test_multi_fragment.view.IPart1View;
 import com.example.androidmvc.practice.test_multi_fragment.view.TestMultiPartMvpFragment;
 
-public class Part1Module extends BaseModule implements IPart1View {
+public class FragmentPart1Module extends BaseModule<TestMultiPartMvpFragment, TestMultiPartMvpFragmentPresenter> implements IPart1View {
 
     private TextView tvPart1;
     private Button btnPart1;
-    private TestMultiPartMvpFragment mTestFragment;
-    private TestMultiPartMvpFragmentPresenter mFragmentPresenter;
 
-    public Part1Module(View parent) {
+    public FragmentPart1Module(View parent) {
         super(parent);
     }
 
-    public Part1Module(BaseMultiPartMvpFragment fragment, View parent) {
-        super(fragment, parent);
-        this.mTestFragment = (TestMultiPartMvpFragment)fragment;
-        this.mFragmentPresenter = mTestFragment.getPresenter();
+    public FragmentPart1Module(TestMultiPartMvpFragment fragment, TestMultiPartMvpFragmentPresenter presenter, View parent) {
+        super(fragment, presenter, parent);
     }
 
     @Override
@@ -50,8 +45,8 @@ public class Part1Module extends BaseModule implements IPart1View {
     public void onClick(View v) {
         super.onClick(v);
         if(v.getId() == R.id.btn_part10) {
-            if(mFragmentPresenter != null)
-                mFragmentPresenter.getPart1Text();
+            if(mPresenter != null)
+                mPresenter.getPart1Text();
         }
     }
 }

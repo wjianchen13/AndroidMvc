@@ -9,16 +9,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.androidmvc.practice.base.LazyLoader;
-import com.example.androidmvc.practice.base.view.BaseMultiPartMvpFragment;
+import com.example.androidmvc.practice.base.presenter.BaseMultiPartMvpPresenter;
 import com.example.androidmvc.practice.base.view.IBaseMvpView;
+import com.example.androidmvc.practice.base.view.IBaseTargetView;
 
 /**
  * 模块公共父类
  */
-public abstract class BaseModule extends LazyLoader implements IBaseMvpView, View.OnClickListener {
+public abstract class BaseModule<V extends IBaseTargetView, P extends BaseMultiPartMvpPresenter> extends LazyLoader implements IBaseMvpView, View.OnClickListener {
 
     protected Context mContext;
-    protected BaseMultiPartMvpFragment mFragment;
+    protected V mTarget;
+    protected P mPresenter;
 
     protected View mCurrentLayout;
     protected View mRootLayout;
@@ -28,10 +30,11 @@ public abstract class BaseModule extends LazyLoader implements IBaseMvpView, Vie
         this.mRootLayout = parent;
     }
 
-    public BaseModule(BaseMultiPartMvpFragment fragment, View parent) {
+    public BaseModule(V target, P presenter, View parent) {
         this(parent);
-        this.mFragment = fragment;
-        mFragment.addModule(this);
+        this.mTarget = target;
+        this.mTarget.addModule(this);
+        this.mPresenter = presenter;
     }
 
     @Override

@@ -13,6 +13,7 @@ import com.example.androidmvc.mvp.view.MvpActivity;
 import com.example.androidmvc.mvvm.view.LoginActivity;
 import com.example.androidmvc.practice.test_activity.view.TestMvpActivity;
 import com.example.androidmvc.practice.test_fragment.view.TestFragmentActivity1;
+import com.example.androidmvc.practice.test_multi_activity.view.TestMultiPartyActivity;
 import com.example.androidmvc.practice.test_multi_fragment.view.TestMultiPartyFragmentActivity;
 import com.example.androidmvc.test_recyclerview.view.TestRecyclerviewActivity;
 
@@ -68,13 +69,20 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, TestFragmentActivity1.class));
     }
 
-
     /**
      * 测试项目中多部分fragment的情况
      * @param v
      */
     public void onTestMultiFragment(View v) {
         startActivity(new Intent(this, TestMultiPartyFragmentActivity.class));
+    }
+
+    /**
+     * 测试项目中多部分Activity的情况
+     * @param v
+     */
+    public void onTestMultiActivity(View v) {
+        startActivity(new Intent(this, TestMultiPartyActivity.class));
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.androidmvc.practice.test_multi_fragment.modules;
+package com.example.androidmvc.practice.test_multi_activity.modules;
 
 import android.view.View;
 import android.view.ViewStub;
@@ -6,20 +6,21 @@ import android.widget.TextView;
 
 import com.example.androidmvc.R;
 import com.example.androidmvc.practice.base.module.BaseModule;
-import com.example.androidmvc.practice.base.view.BaseMultiPartMvpFragment;
+import com.example.androidmvc.practice.test_multi_activity.presenter.TestMultiPartMvpActivityPresenter;
+import com.example.androidmvc.practice.test_multi_activity.view.TestMultiPartyActivity;
 import com.example.androidmvc.practice.test_multi_fragment.view.IPart3View;
 import com.example.androidmvc.practice.test_multi_fragment.view.TestMultiPartMvpFragment;
 
-public class Part3Module extends BaseModule implements IPart3View {
+public class ActivityPart3Module extends BaseModule<TestMultiPartyActivity, TestMultiPartMvpActivityPresenter>  implements IPart3View {
 
     private TextView tvPart3;
 
-    public Part3Module(View parent) {
+    public ActivityPart3Module(View parent) {
         super(parent);
     }
 
-    public Part3Module(TestMultiPartMvpFragment fragment, View parent) {
-        super(fragment, parent);
+    public ActivityPart3Module(TestMultiPartyActivity activity, TestMultiPartMvpActivityPresenter presenter, View parent) {
+        super(activity, presenter, parent);
     }
 
     @Override

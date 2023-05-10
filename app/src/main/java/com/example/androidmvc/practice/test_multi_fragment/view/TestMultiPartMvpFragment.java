@@ -15,9 +15,9 @@ import androidx.annotation.Nullable;
 
 import com.example.androidmvc.R;
 import com.example.androidmvc.practice.base.view.BaseMultiPartMvpFragment;
-import com.example.androidmvc.practice.test_multi_fragment.modules.Part1Module;
-import com.example.androidmvc.practice.test_multi_fragment.modules.Part2Module;
-import com.example.androidmvc.practice.test_multi_fragment.modules.Part3Module;
+import com.example.androidmvc.practice.test_multi_fragment.modules.FragmentPart1Module;
+import com.example.androidmvc.practice.test_multi_fragment.modules.FragmentPart2Module;
+import com.example.androidmvc.practice.test_multi_fragment.modules.FragmentPart3Module;
 import com.example.androidmvc.practice.test_multi_fragment.presenter.TestMultiPartMvpFragmentPresenter;
 
 /**
@@ -34,9 +34,9 @@ public class TestMultiPartMvpFragment extends BaseMultiPartMvpFragment<ITestMult
     private Button btnTest3;
     private Button btnTest4;
 
-    private Part1Module mPart1Module;
-    private Part2Module mPart2Module;
-    private Part3Module mPart3Module;
+    private FragmentPart1Module mPart1Module;
+    private FragmentPart2Module mPart2Module;
+    private FragmentPart3Module mPart3Module;
 
     public TestMultiPartMvpFragment() {
     }
@@ -101,12 +101,11 @@ public class TestMultiPartMvpFragment extends BaseMultiPartMvpFragment<ITestMult
     }
 
     private void initModules() {
-        mPart1Module = new Part1Module(this, mRootView);
+        mPart1Module = new FragmentPart1Module(this, getPresenter(), mRootView);
         mPart1Module.init();
-        mPart2Module = new Part2Module(this, mRootView);
+        mPart2Module = new FragmentPart2Module(this, getPresenter(), mRootView);
         mPart2Module.init();
-        mPart3Module = new Part3Module(this, mRootView);
-
+        mPart3Module = new FragmentPart3Module(this, getPresenter(), mRootView);
     }
 
     @Override
@@ -160,7 +159,6 @@ public class TestMultiPartMvpFragment extends BaseMultiPartMvpFragment<ITestMult
     public void onGetText(String str) {
         mPart1Module.onGetText(str);
     }
-
 
     @Override
     public void onGetText2(String str) {

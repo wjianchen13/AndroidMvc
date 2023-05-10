@@ -2,13 +2,12 @@ package com.example.androidmvc.practice.base.view;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.androidmvc.practice.base.module.BaseModule;
+import com.example.androidmvc.practice.base.presenter.BaseMultiPartyActivityMvpPresenter;
 import com.example.androidmvc.practice.base.presenter.MultiPartyMvpPresenter;
 
 import java.util.LinkedList;
@@ -19,14 +18,14 @@ import java.util.List;
  * @param <V>
  * @param <P>
  */
-public abstract class BaseMultiPartMvpFragment<V extends IBaseMultiPartMvpView, P extends MultiPartyMvpPresenter<V>>
-        extends BaseMvpFragment<V, P> implements IBaseMultiPartMvpView, IBaseTargetView  {
+public abstract class BaseMultiPartMvpActivity<V extends IBaseMultiPartMvpView, P extends MultiPartyMvpPresenter<V>>
+        extends BaseMvpActivity<V, P> implements IBaseMultiPartMvpView, IBaseTargetView {
 
-    public static final String TAG = BaseMultiPartMvpFragment.class.getSimpleName();
+    public static final String TAG = BaseMultiPartMvpActivity.class.getSimpleName();
 
     protected List<BaseModule> mModules;
 
-    public BaseMultiPartMvpFragment() {
+    public BaseMultiPartMvpActivity() {
 
     }
 
@@ -38,64 +37,34 @@ public abstract class BaseMultiPartMvpFragment<V extends IBaseMultiPartMvpView, 
 
     @Override
     public Context getContext() {
-        return getActivity();
+        return this;
     }
 
     @Override
     public void showToast(String str) {
-        Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void addModule(BaseModule module){
-        getModules().add(module);
+    public void addModule(BaseModule feature){
+        getModules().add(feature);
     }
 
     @Override
-    public void removeModule(BaseModule module){
-        if (module != null) {
-            getModules().remove(module);
+    public void removeModule(BaseModule feature){
+        if (feature != null) {
+            getModules().remove(feature);
         }
     }
 
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        findAllModule(m -> {
-            if(m != null)
-                m.onAttach(context);
-        });
-        getPresenter().onAttach(context);
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         findAllModule(m -> {
             if(m != null)
                 m.onCreate(savedInstanceState);
         });
         getPresenter().onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        findAllModule(m -> {
-            if(m != null)
-                m.onActivityCreated(savedInstanceState);
-        });
-        getPresenter().onActivityCreated(savedInstanceState);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        findAllModule(m -> {
-            if(m != null)
-                m.onViewCreated(view, savedInstanceState);
-        });
-        getPresenter().onViewCreated(view, savedInstanceState);
     }
 
     @Override
@@ -106,6 +75,26 @@ public abstract class BaseMultiPartMvpFragment<V extends IBaseMultiPartMvpView, 
                 m.onStart();
         });
         getPresenter().onStart();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        findAllModule(m -> {
+            if(m != null)
+                m.onStart();
+        });
+        getPresenter().onRestart();
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        findAllModule(m -> {
+            if(m != null)
+                m.onStart();
+        });
+        getPresenter().onPostResume();
     }
 
     @Override
@@ -139,16 +128,6 @@ public abstract class BaseMultiPartMvpFragment<V extends IBaseMultiPartMvpView, 
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        findAllModule(m -> {
-            if(m != null)
-                m.onDestroyView();
-        });
-        getPresenter().onDestroyView();
-    }
-
-    @Override
     public void onDestroy() {
         super.onDestroy();
         findAllModule(m -> {
@@ -156,16 +135,6 @@ public abstract class BaseMultiPartMvpFragment<V extends IBaseMultiPartMvpView, 
                 m.onDestroy();
         });
         getPresenter().onDestroy();
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        findAllModule(m -> {
-            if(m != null)
-                m.onDetach();
-        });
-        getPresenter().onDetach();
     }
 
     private void findAllModule(OnModuleListener listener) {

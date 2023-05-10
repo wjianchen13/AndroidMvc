@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.androidmvc.practice.base.presenter.BaseActivityMvpPresenter;
+import com.example.androidmvc.practice.base.presenter.BaseMultiPartMvpPresenter;
 
 /**
  * MVP公共父类
@@ -15,7 +16,7 @@ import com.example.androidmvc.practice.base.presenter.BaseActivityMvpPresenter;
  * 因为子类需要使用BaseMvpPresenter<ITestMvpView>
  * 而父类限定了IBaseMvpView，所以类型不匹配，正确是是使用V extends IBaseMvpView
  */
-public abstract class BaseMvpActivity<V extends IBaseMvpView, P extends BaseActivityMvpPresenter<V>> extends AppCompatActivity implements IBaseMvpView {
+public abstract class BaseMvpActivity<V extends IBaseMvpView, P extends BaseMultiPartMvpPresenter<V>> extends AppCompatActivity implements IBaseMvpView {
 
     protected P mPresenter;
 
@@ -26,6 +27,12 @@ public abstract class BaseMvpActivity<V extends IBaseMvpView, P extends BaseActi
     }
 
     protected abstract P initPresenter();
+
+    public P getPresenter() {
+        if(mPresenter == null)
+            mPresenter = initPresenter();
+        return mPresenter;
+    }
 
     @Override
     public Context getContext() {

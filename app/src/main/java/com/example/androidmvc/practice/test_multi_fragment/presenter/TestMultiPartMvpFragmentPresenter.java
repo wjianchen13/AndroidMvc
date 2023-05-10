@@ -1,14 +1,13 @@
 package com.example.androidmvc.practice.test_multi_fragment.presenter;
 
-import com.example.androidmvc.practice.base.presenter.BaseFragmentMultiPartyMvpPresenter;
-import com.example.androidmvc.practice.test_fragment.view.ITestMvpFragmentView;
+import com.example.androidmvc.practice.base.presenter.MultiPartyMvpPresenter;
 import com.example.androidmvc.practice.test_multi_fragment.view.ITestMultiPartMvpFragmentView;
 
-public class TestMultiPartMvpFragmentPresenter extends BaseFragmentMultiPartyMvpPresenter<ITestMultiPartMvpFragmentView> {
+public class TestMultiPartMvpFragmentPresenter extends MultiPartyMvpPresenter<ITestMultiPartMvpFragmentView> {
 
-    private Part1Presenter mPart1Presenter;
-    private Part2Presenter mPart2Presenter;
-    private Part3Presenter mPart3Presenter;
+    private FragmentPart1Presenter mPart1Presenter;
+    private FragmentPart2Presenter mPart2Presenter;
+    private FragmentPart3Presenter mPart3Presenter;
 
     public TestMultiPartMvpFragmentPresenter(ITestMultiPartMvpFragmentView view) {
         super(view);
@@ -16,9 +15,9 @@ public class TestMultiPartMvpFragmentPresenter extends BaseFragmentMultiPartyMvp
     }
 
     private void initPresenters(ITestMultiPartMvpFragmentView view) {
-        mPart1Presenter = initChildPresenter(new Part1Presenter(view));
-        mPart2Presenter = initChildPresenter(new Part2Presenter(view));
-        mPart3Presenter = initChildPresenter(new Part3Presenter(view));
+        mPart1Presenter = initChildPresenter(new FragmentPart1Presenter(view));
+        mPart2Presenter = initChildPresenter(new FragmentPart2Presenter(view));
+        mPart3Presenter = initChildPresenter(new FragmentPart3Presenter(view));
     }
 
     public void getPart1Text() {
