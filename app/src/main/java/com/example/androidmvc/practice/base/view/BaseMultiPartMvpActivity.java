@@ -7,7 +7,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.androidmvc.practice.base.module.BaseModule;
-import com.example.androidmvc.practice.base.presenter.BaseMultiPartyActivityMvpPresenter;
 import com.example.androidmvc.practice.base.presenter.MultiPartyMvpPresenter;
 
 import java.util.LinkedList;

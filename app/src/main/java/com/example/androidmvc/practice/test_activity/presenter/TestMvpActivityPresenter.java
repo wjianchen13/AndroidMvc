@@ -1,12 +1,12 @@
 package com.example.androidmvc.practice.test_activity.presenter;
 
-import com.example.androidmvc.practice.base.presenter.BaseMultiPartMvpPresenter;
+import com.example.androidmvc.practice.base.presenter.BaseMvpPresenter;
 import com.example.androidmvc.practice.test_activity.view.ITestMvpActivityView;
 
 /**
  * MVP公共Presenter
  */
-public class TestMvpActivityPresenter extends BaseMultiPartMvpPresenter<ITestMvpActivityView> {
+public class TestMvpActivityPresenter extends BaseMvpPresenter<ITestMvpActivityView> {
 
     public TestMvpActivityPresenter(ITestMvpActivityView view) {
         super(view);

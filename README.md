@@ -91,17 +91,42 @@ https://zhuanlan.zhihu.com/p/400738449
 https://www.bbsmax.com/A/obzb0AR05E/
 
 
+# 框架图
+Activity 直接使用
+          IBaseMvpView                    BaseMvpActivity                    BaseMvpPresenter
+              ^                                 ^                                   ^
+              |                                 |                                   |
+              |                                 |                                   |
+     ITestMvpActivityView                 TestMvpActivity                 TestMvpActivityPresenter
 
+Fragment 直接使用
+          IBaseMvpView                    BaseMvpFragment                    BaseMvpPresenter
+              ^                                 ^                                   ^
+              |                                 |                                   |
+              |                                 |                                   |
+     ITestMvpFragmentView                 TestMvpFragment                 TestMvpFragmentPresenter
 
+Activity 多模块使用
+          IBaseMvpView                    BaseMvpActivity                    BaseMvpPresenter
+              ^                                 ^                                   ^
+              |                                 |                                   |
+              |                                 |                                   |
+     IBaseMultiPartMvpView            BaseMultiPartMvpActivity             MultiPartyMvpPresenter
+              ^                                 ^                                   ^
+              |                                 |                                   |
+              |                                 |                                   |
+  ITestMultiPartMvpActivityView        TestMultiPartyActivity          TestMultiPartMvpActivityPresenter
 
-
-
-
-
-
-
-
-
+Fragment 多模块使用
+          IBaseMvpView                    BaseMvpFragment                    BaseMvpPresenter
+              ^                                 ^                                   ^
+              |                                 |                                   |
+              |                                 |                                   |
+     IBaseMultiPartMvpView             BaseMultiPartMvpFragment            MultiPartyMvpPresenter
+              ^                                 ^                                   ^
+              |                                 |                                   |
+              |                                 |                                   |
+  ITestMultiPartMvpFragmentView        TestMultiPartMvpFragment        TestMultiPartMvpFragmentPresenter
 
 
 

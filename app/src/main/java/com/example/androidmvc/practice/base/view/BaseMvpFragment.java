@@ -11,9 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.androidmvc.practice.base.presenter.BaseMultiPartMvpPresenter;
+import com.example.androidmvc.practice.base.presenter.BaseMvpPresenter;
 
-public abstract class BaseMvpFragment<V extends IBaseMvpView, P extends BaseMultiPartMvpPresenter<V>>  extends Fragment implements IBaseMvpView  {
+public abstract class BaseMvpFragment<V extends IBaseMvpView, P extends BaseMvpPresenter<V>>  extends Fragment implements IBaseMvpView  {
 
     public static final String TAG = BaseMvpFragment.class.getSimpleName();
 
