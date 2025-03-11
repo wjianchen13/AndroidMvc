@@ -29,6 +29,7 @@
         <activity android:name=".practice.test_activity.view.TestMvpActivity" />
         <activity android:name=".practice.test_multi_fragment.view.TestMultiPartyFragmentActivity" />
         <activity android:name=".practice.test_multi_activity.view.TestMultiPartyActivity" />
+        <activity android:name=".test1.activity.TestActivity" />
 
     </application>
 
