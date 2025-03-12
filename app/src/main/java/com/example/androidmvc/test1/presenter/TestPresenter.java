@@ -5,7 +5,7 @@ import com.example.androidmvc.test1.view.ITestView;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TestPresenter extends TestBasePresenter<ITestView> {
+public class TestPresenter<V extends ITestView> extends TestBasePresenter<V> {
 
     private TestPresenter1 mPart1Presenter;
     private TestPresenter2 mPart2Presenter;
@@ -19,7 +19,7 @@ public class TestPresenter extends TestBasePresenter<ITestView> {
         return mChildFragmentPresenters;
     }
 
-    public TestPresenter(ITestView view) {
+    public TestPresenter(V view) {
         super(view);
         initPresenters(view);
     }

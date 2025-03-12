@@ -1,28 +1,20 @@
 package com.example.androidmvc.test1.activity;
 
-import static com.example.androidmvc.practice.base.module.Constants.MODULE_VISIABLE;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.androidmvc.R;
-import com.example.androidmvc.practice.base.view.BaseMultiPartMvpActivity;
-import com.example.androidmvc.practice.test_multi_activity.modules.ActivityPart1Module;
-import com.example.androidmvc.practice.test_multi_activity.modules.ActivityPart2Module;
-import com.example.androidmvc.practice.test_multi_activity.modules.ActivityPart3Module;
-import com.example.androidmvc.practice.test_multi_activity.presenter.TestMultiPartMvpActivityPresenter;
-import com.example.androidmvc.practice.test_multi_activity.view.ITestMultiPartMvpActivityView;
 import com.example.androidmvc.test1.module.BaseModule;
 import com.example.androidmvc.test1.module.TestModule1;
 import com.example.androidmvc.test1.module.TestModule2;
 import com.example.androidmvc.test1.module.TestModule3;
-import com.example.androidmvc.test1.presenter.TestBasePresenter;
 import com.example.androidmvc.test1.presenter.TestPresenter;
 import com.example.androidmvc.test1.view.ITargetView;
+import com.example.androidmvc.test1.view.ITestBaseView;
 import com.example.androidmvc.test1.view.ITestView;
 
-public class TestActivity extends TestBaseActivity<ITestView, TestPresenter> implements ITestView, ITargetView, View.OnClickListener {
+public class TestActivity<V extends ITestView, P extends TestPresenter<V>> extends TestBaseActivity<V, P> implements ITestView, ITargetView, View.OnClickListener {
 
     public static final String TAG = TestActivity.class.getSimpleName();
 
@@ -33,16 +25,15 @@ public class TestActivity extends TestBaseActivity<ITestView, TestPresenter> imp
     private Button btnTest2;
     private Button btnTest3;
     private Button btnTest4;
-
-    private TestModule1 mPart1Module;
-    private TestModule2 mPart2Module;
-    private TestModule3 mPart3Module;
+    private TestHandler mTestHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_multi_part);
+
         initView();
+        mTestHandler = new TestHandler(this, mRootView);
         initModules();
     }
 
@@ -59,17 +50,23 @@ public class TestActivity extends TestBaseActivity<ITestView, TestPresenter> imp
     }
 
     @Override
-    protected TestPresenter initPresenter() {
-        return new TestPresenter(this);
+    protected P initPresenter() {
+        return (P) new TestPresenter(this);
     }
 
-    private void initModules() {
-        mPart1Module = createModule(new TestModule1(this, getPresenter(), mRootView));
-        mPart1Module.init();
-        mPart2Module = createModule(new TestModule2(this, getPresenter(), mRootView));
-        mPart2Module.init();
-        mPart3Module = createModule(new TestModule3(this, getPresenter(), mRootView));
+    @Override
+    protected <M extends  BaseModule> M createModule(M module) {
+        return super.createModule(module);
+    }
+//    private TestModule1 mPart1Module;
+//
+//    public void initModules1() {
+//        mPart1Module = createModule(new TestModule1(this, getPresenter(), mRootView));
+//        mPart1Module.init();
+//    }
 
+    private void initModules() {
+        mTestHandler.initModules();
     }
 
     @Override
@@ -79,7 +76,8 @@ public class TestActivity extends TestBaseActivity<ITestView, TestPresenter> imp
         } else if(v.getId() == R.id.btn_test2) {
             getPresenter().getPart2Text();
         } else if(v.getId() == R.id.btn_test3) {
-            mPart3Module.setVisible(MODULE_VISIABLE);
+//            mPart3Module.setVisible(MODULE_VISIABLE);
+            mTestHandler.setPart3Visibility();
         } else if(v.getId() == R.id.btn_test4) {
             getPresenter().getPart3Text();
         }
@@ -92,18 +90,18 @@ public class TestActivity extends TestBaseActivity<ITestView, TestPresenter> imp
 
     @Override
     public void onGetText(String str) {
-        mPart1Module.onGetText(str);
+        mTestHandler.onGetText(str);
     }
 
 
     @Override
     public void onGetText2(String str) {
-        mPart2Module.onGetText2(str);
+        mTestHandler.onGetText2(str);
     }
 
     @Override
     public void onGetText3(String str) {
-        mPart3Module.onGetText3(str);
+        mTestHandler.onGetText3(str);
     }
 
 
