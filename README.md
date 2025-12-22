@@ -85,10 +85,16 @@ MVVM 缺点
 # 列表显示数据，包括activity和fragment
 
 
+# 编译环境
+android-studio-2024.3.2.15
+gradle插件：8.10.1
+gradle版本：gradle-8.11.1-bin
+
 # 参考文档
+https://blog.csdn.net/weixin_44008788/article/details/127494705
+https://cloud.tencent.com.cn/developer/article/2123801
+https://article.juejin.cn/post/7261627173794824251
 https://www.pudn.com/news/6228df3e9ddf223e1ad2c847.html
-https://zhuanlan.zhihu.com/p/400738449
-https://www.bbsmax.com/A/obzb0AR05E/
 
 
 # 框架图
