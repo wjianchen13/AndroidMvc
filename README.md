@@ -95,7 +95,7 @@ https://blog.csdn.net/weixin_44008788/article/details/127494705
 https://cloud.tencent.com.cn/developer/article/2123801
 https://article.juejin.cn/post/7261627173794824251
 https://www.pudn.com/news/6228df3e9ddf223e1ad2c847.html
-
+https://article.juejin.cn/post/7574821757664854057
 
 # 框架图
 Activity 直接使用
