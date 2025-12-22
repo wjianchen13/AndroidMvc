@@ -15,6 +15,7 @@ import com.example.androidmvc.practice.test_activity.view.TestMvpActivity;
 import com.example.androidmvc.practice.test_fragment.view.TestFragmentActivity1;
 import com.example.androidmvc.practice.test_multi_activity.view.TestMultiPartyActivity;
 import com.example.androidmvc.practice.test_multi_fragment.view.TestMultiPartyFragmentActivity;
+import com.example.androidmvc.test1.activity.TestActivity;
 import com.example.androidmvc.test_recyclerview.view.TestRecyclerviewActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -83,6 +84,14 @@ public class MainActivity extends AppCompatActivity {
      */
     public void onTestMultiActivity(View v) {
         startActivity(new Intent(this, TestMultiPartyActivity.class));
+    }
+
+    /**
+     * 测试Activity还是泛型的情况
+     * @param v
+     */
+    public void onTest1(View v) {
+        startActivity(new Intent(this, TestActivity.class));
     }
 
 }

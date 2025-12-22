@@ -1,4 +1,4 @@
-package com.example.androidmvc.practice.base.module;
+package com.example.androidmvc.test1.module;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,15 +9,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.androidmvc.practice.base.LazyLoader;
+import com.example.androidmvc.practice.base.module.Constants;
 import com.example.androidmvc.practice.base.presenter.BaseMultiPartMvpPresenter;
 import com.example.androidmvc.practice.base.view.IBaseMvpView;
 import com.example.androidmvc.practice.base.view.IBaseTargetView;
+import com.example.androidmvc.test1.presenter.TestBasePresenter;
+import com.example.androidmvc.test1.view.ITargetView;
 
 /**
  * 模块公共父类
  *
  */
-public abstract class BaseModule<V extends IBaseTargetView, P extends BaseMultiPartMvpPresenter> extends LazyLoader implements IBaseMvpView, View.OnClickListener {
+public abstract class BaseModule<V extends ITargetView, P extends TestBasePresenter> extends LazyLoader implements IBaseMvpView, View.OnClickListener {
 
     protected Context mContext;
     protected V mTarget;
