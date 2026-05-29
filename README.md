@@ -96,6 +96,11 @@ https://cloud.tencent.com.cn/developer/article/2123801
 https://article.juejin.cn/post/7261627173794824251
 https://www.pudn.com/news/6228df3e9ddf223e1ad2c847.html
 https://article.juejin.cn/post/7574821757664854057
+MVVM 进阶版：MVI 架构了解一下~
+https://juejin.cn/post/7022624191723601928
+
+Android应用开发架构之MVI：原理、流程与实战指南
+https://juejin.cn/post/7240034353370152997
 
 # 框架图
 Activity 直接使用
